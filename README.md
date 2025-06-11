@@ -20,20 +20,16 @@ I created this project to learn how socket communication and file transfer work 
 ```bash
 /usr/local/bin/python3.13 "/home/my/rajani maurya first assinment/server.py"
 2️⃣ Then, split the terminal (or open a new one) and run the client:
-bash
-Copy
-Edit
+
+
 /usr/local/bin/python3.13 "/home/my/rajani maurya first assinment/client.py"
 3️⃣ Client will ask for a filename to send:
-bash
-Copy
-Edit
+
+
 Enter the filename to send: data.txt
 After this, the client will send the file, and the server will show:
 
-java
-Copy
-Edit
+
 Connected by (IP address, port)
 File 'data.txt' received successfully.
 ⚙️ How the Code Works
