@@ -69,32 +69,6 @@ Rajani Maurya
 Made for learning & practice 💻🌱
 GitHub: @R69697
 
-yaml
-Copy
-Edit
-
----
-
-## 📌 How to Use This
-
-1. Create a new file in your project:
-```bash
-nano README.md
-Paste the above polished version
-
-Save (Ctrl + O, Enter, Ctrl + X)
-
-Push it to GitHub:
-
-bash
-Copy
-Edit
-git add README.md
-git commit -m "Added polished README file"
-git push
-Batao agar chaho to isme koi aur section bhi add karwa doon — jaise screenshots, diagrams ya demo GIF 🎥✨
-Ready to push?
-
 
 
 
