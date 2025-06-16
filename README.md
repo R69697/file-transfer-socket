@@ -33,20 +33,23 @@ The project supports different file formats and accurately handles data transmis
 
 ---
 
-## 🚀 How to Run
-
-### 1️⃣ First, open a terminal and run the server:
-```bash
+How to Run
+1. First open terminal and run server
 /usr/local/bin/python3.13 "/home/my/rajani maurya first assinment/server.py"
 
-2️⃣ Then, open a new terminal and run the client:
-
+2. and again split the terminal and run client
 /usr/local/bin/python3.13 "/home/my/rajani maurya first assinment/client.py"
 
-3️⃣ The client will ask for the filename:
-
+3. Client will ask filename, you type
 Enter the filename to send: data.txt
-✅ Once sent, the server will display:
+
+then our data is send to server and server responces connected by (ip address and temp port no) and "File received" with file name
+
+How Code Work server.py it create server socket bind with host and port (I used localhost and 5050) wait for client when client connect, receive file and save
+
+client.py create client socket connect to server ask file name from user open file and send to server
+
+Important use same port number in both client and server first run server then client socket module used this code not for internet, only same PC or same network
 
 
 Connected by (IP address, port)
