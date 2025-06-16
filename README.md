@@ -77,8 +77,10 @@ Works only within the same local network
 
 Uses Python’s built-in socket module — no external libraries needed
 
+
 👩‍💻 Author
 Rajani Maurya
-Made with curiosity, practice, and a love for learning 💻🌱
+Made with curiosity,
+practice, and a love for learning 💻🌱
 GitHub: @R69697
 
