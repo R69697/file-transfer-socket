@@ -45,15 +45,14 @@ Enter the filename to send: data.txt
 
 then our data is send to server and server responces connected by (ip address and temp port no) and "File received" with file name
 
-How Code Work server.py it create server socket bind with host and port (I used localhost and 5050) wait for client when client connect, receive file and save
-
-client.py create client socket connect to server ask file name from user open file and send to server
 
 Important use same port number in both client and server first run server then client socket module used this code not for internet, only same PC or same network
 
 
 Connected by (IP address, port)
 File 'data.txt' received successfully.
+
+
 ⚙️ How the Code Works
 🔹 server.py
 Creates a socket and binds it to a host and port
