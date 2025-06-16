@@ -1,35 +1,61 @@
+# client.py
 import socket
+import os
 
-host = 'localhost'
-port = 5050  
+HOST = 'localhost'
+PORT = 5050
 
-# Create client socket
-client_socket = socket.socket()
+def send_file(sock, filename):
+    if not os.path.exists(filename):
+        print(f"[x] File not found: {filename}")
+        return
 
-try:
-    # Connect to the server
-    client_socket.connect((host, port))
-    print(f" Connected to server at {host}:{port}")
-    
-    
-    filename = input("Enter the filename to send: ").strip()
-    
-    client_socket.send(filename.encode())
-    
+    file_size = os.path.getsize(filename)
+    header = f"{filename}||{file_size}"
+    header_bytes = header.encode()
+    header_len = len(header_bytes)
+
+    print(f"[>] Sending: {filename} ({file_size} bytes)")
+
+    # Send header length (4 bytes)
+    sock.sendall(header_len.to_bytes(4, byteorder='big'))
+    # Send header
+    sock.sendall(header_bytes)
+
+    # Send file content
     with open(filename, "rb") as f:
         while True:
-            data = f.read(1024)
-            if not data:
+            chunk = f.read(1024)
+            if not chunk:
                 break
-            client_socket.send(data)
+            sock.sendall(chunk)
 
-    print(f" File '{filename}' sent successfully.")
+    print(f"[✓] File '{filename}' sent successfully.\n")
 
-except FileNotFoundError:
-    print(" File not found. Please check the filename and try again.")
-except ConnectionRefusedError:
-    print("Server not running or port is wrong.")
-except Exception as e:
-    print(f"An error occurred: {e}")
-finally:
-    client_socket.close()
+def main():
+    filenames = input("Enter file names to send (comma-separated): ").split(",")
+
+    client_socket = socket.socket()
+    try:
+        client_socket.connect((HOST, PORT))
+        print(f"[+] Connected to server at {HOST}:{PORT}")
+
+        for file in filenames:
+            file = file.strip()
+            if file:
+                send_file(client_socket, file)
+
+        # Send END marker
+        end_header = "END".encode()
+        client_socket.sendall(len(end_header).to_bytes(4, byteorder='big'))
+        client_socket.sendall(end_header)
+
+    except Exception as e:
+        print(f"[x] Error: {e}")
+    finally:
+        client_socket.close()
+        
+        
+
+if __name__ == "__main__":
+    main()  
